@@ -1,12 +1,17 @@
-import React from 'react';
 import './App.css';
-import Title from './components/Title';
-
-function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Title  from './components/Title';
+import Thread from "./components//Thread";
+import SubGenre from "./components/SubGenre";
+const App = () => {
   return (
-    <div>
-      <Title />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path={`/`} element={<Title />} />
+        <Route path={`/SubGenre/`} element={<SubGenre />} />
+        <Route path={`/Thread/`} element={<Thread />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
