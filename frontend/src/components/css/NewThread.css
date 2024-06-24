@@ -1,0 +1,13 @@
+.center{
+    font-size: 24px;
+    margin: auto;
+    width: 700px;
+    text-align: center;
+}
+.child {
+    width: 700px;
+    height: 30px;
+
+    /* 水平方向の中央揃え */
+    margin: 0 auto;
+  }
