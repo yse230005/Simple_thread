@@ -8,7 +8,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path={`/`} element={<Title />} />
-        <Route path={`/SubGenre/`} element={<SubGenre />} />
+        <Route path="/SubGenre/:id" element={<SubGenre />} />
         <Route path={`/Thread/`} element={<Thread />} />
       </Routes>
     </BrowserRouter>
