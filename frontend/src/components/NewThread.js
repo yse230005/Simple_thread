@@ -38,6 +38,7 @@ function NewThread() {
     return (
         <div className="center">
             <h2>NewThread</h2>
+            
             <input
                 className="child"
                 type="text"
