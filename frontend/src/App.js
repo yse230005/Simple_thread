@@ -11,7 +11,7 @@ const App = () => {
         <Route path={`/`} element={<Title />} />
         <Route path="/SubGenre/:id" element={<SubGenre />} />
         <Route path="/NewThread/:id" element={<NewThread />} />
-        <Route path={`/Thread/`} element={<Thread />} />
+        <Route path={`/Thread/:id`} element={<Thread />} />
       </Routes>
     </BrowserRouter>
   );

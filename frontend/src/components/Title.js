@@ -8,20 +8,20 @@ const Title = () => {
   // データの仮想的な設定
   useEffect(() => {
     const MainGenreData = [
-      { id: 1, name: '食べ物' },
-      { id: 2, name: '行動' },
-      { id: 3, name: '顔文字' },
-      { id: 4, name: 'その他' },
+      { id: 1, name: 'ジャンル１' },
+      { id: 2, name: 'ジャンル２' },
+      { id: 3, name: 'ジャンル３' },
+      { id: 4, name: 'ジャンル４' },
     ];
     const SubGenreData = [
-      { id: 1, Main_Genre_id: 1, name: 'おうどん' },
-      { id: 2, Main_Genre_id: 2, name: 'たべたい' },
-      { id: 3, Main_Genre_id: 3, name: 'ふ━━(　´_ゝ`)━(　´_ゝ`)━(　´_ゝ`)━━ん' },
-      { id: 4, Main_Genre_id: 1, name: 'りんご' },
-      { id: 5, Main_Genre_id: 2, name: '走る' },
-      { id: 6, Main_Genre_id: 3, name: '(´・ω・｀)' },
-      { id: 7, Main_Genre_id: 4, name: '雑談' },
-      { id: 8, Main_Genre_id: 4, name: '暇' },
+      { id: 1, Main_Genre_id: 1, name: 'サブジャンル１' },
+      { id: 2, Main_Genre_id: 2, name: 'サブジャンル２' },
+      { id: 3, Main_Genre_id: 3, name: 'サブジャンル３' },
+      { id: 4, Main_Genre_id: 1, name: 'サブジャンル４' },
+      { id: 5, Main_Genre_id: 2, name: 'サブジャンル５' },
+      { id: 6, Main_Genre_id: 3, name: 'サブジャンル６' },
+      { id: 7, Main_Genre_id: 4, name: 'サブジャンル７' },
+      { id: 8, Main_Genre_id: 4, name: 'サブジャンル８' },
     ];
 
     // SubGenreData の sub_name を MainGenreData の name に置き換える

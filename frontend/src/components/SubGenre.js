@@ -9,25 +9,25 @@ const SubGenre = () => {
 
   useEffect(() => {
     const ThreadData = [
-      { id: 1, sub_Genre_id: 1, name: '朝ごはん' },
-      { id: 2, sub_Genre_id: 1, name: '昼ごはん' },
-      { id: 3, sub_Genre_id: 1, name: '夜ごはん' },
-      { id: 4, sub_Genre_id: 3, name: '１２時暇な奴' },
-      { id: 5, sub_Genre_id: 3, name: '好きな顔文字' },
-      { id: 6, sub_Genre_id: 3, name: '(´・ω・｀)' },
-      { id: 7, sub_Genre_id: 4, name: 'かか' },
-      { id: 8, sub_Genre_id: 4, name: 'あ' },
+      { id: 1, sub_Genre_id: 1, name: 'サブジャンル１スレッド１' },
+      { id: 2, sub_Genre_id: 1, name: 'サブジャンル１スレッド２' },
+      { id: 3, sub_Genre_id: 1, name: 'サブジャンル１スレッド３' },
+      { id: 4, sub_Genre_id: 3, name: 'サブジャンル３スレッド４' },
+      { id: 5, sub_Genre_id: 3, name: 'サブジャンル３スレッド５' },
+      { id: 6, sub_Genre_id: 3, name: 'サブジャンル３スレッド６' },
+      { id: 7, sub_Genre_id: 4, name: 'サブジャンル４スレッド７' },
+      { id: 8, sub_Genre_id: 4, name: 'サブジャンル４スレッド８' },
     ];
 
     const SubGenreData = [
-      { id: 1, Main_Genre_id: 1, name: 'おうどん' },
-      { id: 2, Main_Genre_id: 2, name: 'たべたい' },
-      { id: 3, Main_Genre_id: 3, name: 'ふ━━(　´_ゝ`)━(　´_ゝ`)━(　´_ゝ`)━━ん' },
-      { id: 4, Main_Genre_id: 1, name: 'りんご' },
-      { id: 5, Main_Genre_id: 2, name: '走る' },
-      { id: 6, Main_Genre_id: 3, name: '(´・ω・｀)' },
-      { id: 7, Main_Genre_id: 4, name: '雑談' },
-      { id: 8, Main_Genre_id: 4, name: '暇' },
+      { id: 1, Main_Genre_id: 1, name: 'サブジャンル１' },
+      { id: 2, Main_Genre_id: 2, name: 'サブジャンル２' },
+      { id: 3, Main_Genre_id: 3, name: 'サブジャンル３' },
+      { id: 4, Main_Genre_id: 1, name: 'サブジャンル４' },
+      { id: 5, Main_Genre_id: 2, name: 'サブジャンル５' },
+      { id: 6, Main_Genre_id: 3, name: 'サブジャンル６' },
+      { id: 7, Main_Genre_id: 4, name: 'サブジャンル７' },
+      { id: 8, Main_Genre_id: 4, name: 'サブジャンル８' },
     ];
 
     // sub_idに一致するSubGenreDataのnameを取得
