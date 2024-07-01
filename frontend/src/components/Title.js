@@ -9,24 +9,27 @@ const Title = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/genres/', {
-        });
+        const response = await fetch('http://localhost:3000/api/genres');
     
         if (!response.ok) {
+          console.log("c")
           throw new Error('Network response was not ok');
         }
     
         const result = await response.json();
-    
+        console.log("a");
+        
+        setData(result);
+        console.log(data);
+        console.log(result);
         // レスポンスから取得したデータを加工するなどの処理
-        const updatedData = Object.keys(result).map(mainGenre => ({
-          mainGenre,
-          threads: result[mainGenre]
-        }));
-    
-        setData(updatedData);
+        // const updatedData = Object.keys(result).map(mainGenre => ({
+        //   mainGenre,
+        //   threads: result[mainGenre]
+        // }));
+      //   setData(updatedData);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.log("b");
         setError('Error fetching data. Please try again later.');
       }
     };
@@ -49,31 +52,18 @@ const Title = () => {
   // データがある場合の表示
   const groupedData = {};
   data.forEach((item) => {
-    if (!groupedData[item.Main_Genre_id]) {
-      groupedData[item.Main_Genre_id] = [];
+    if (!groupedData[item.name]) {
+      groupedData[item.name] = [];
     }
-    groupedData[item.Main_Genre_id].push(item);
+    groupedData[item.name].push(item);
   });
 
   return (
     <div className="container">
+      <p>{data[0].mainGenre}</p>
+      
       <h1>Simple_Thread</h1>
-      <div className="grid-container">
-        {Object.keys(groupedData).map((Main_Genre_id) => (
-          <div key={Main_Genre_id} className="grid-item">
-            <h2>{groupedData[Main_Genre_id][0].sub_name}</h2>
-            <table>
-              <tbody>
-                {groupedData[Main_Genre_id].map((thread) => (
-                  <tr key={thread.id}>
-                    <td><Link to={`/SubGenre/${thread.id}`}>{thread.name}</Link></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ))}
-      </div>
+     
     </div>
   );
 };
