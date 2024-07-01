@@ -8,38 +8,25 @@ const SubGenre = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const ThreadData = [
-      { id: 1, sub_Genre_id: 1, name: 'サブジャンル１スレッド１' },
-      { id: 2, sub_Genre_id: 1, name: 'サブジャンル１スレッド２' },
-      { id: 3, sub_Genre_id: 1, name: 'サブジャンル１スレッド３' },
-      { id: 4, sub_Genre_id: 3, name: 'サブジャンル３スレッド４' },
-      { id: 5, sub_Genre_id: 3, name: 'サブジャンル３スレッド５' },
-      { id: 6, sub_Genre_id: 3, name: 'サブジャンル３スレッド６' },
-      { id: 7, sub_Genre_id: 4, name: 'サブジャンル４スレッド７' },
-      { id: 8, sub_Genre_id: 4, name: 'サブジャンル４スレッド８' },
-    ];
+    const fetchData = async () => {
+      try {
+        // サブジャンル名を取得
+        const subGenreResponse = await fetch(`http://localhost:3000/api/subgenre/${id}`);
+        const subGenreData = await subGenreResponse.json();
+        if (subGenreData.length > 0) {
+          setSubGenreName(subGenreData[0].name);
+        }
 
-    const SubGenreData = [
-      { id: 1, Main_Genre_id: 1, name: 'サブジャンル１' },
-      { id: 2, Main_Genre_id: 2, name: 'サブジャンル２' },
-      { id: 3, Main_Genre_id: 3, name: 'サブジャンル３' },
-      { id: 4, Main_Genre_id: 1, name: 'サブジャンル４' },
-      { id: 5, Main_Genre_id: 2, name: 'サブジャンル５' },
-      { id: 6, Main_Genre_id: 3, name: 'サブジャンル６' },
-      { id: 7, Main_Genre_id: 4, name: 'サブジャンル７' },
-      { id: 8, Main_Genre_id: 4, name: 'サブジャンル８' },
-    ];
+        // スレッドデータを取得
+        const threadResponse = await fetch(`http://localhost:3000/api/threads/${id}`);
+        const threadData = await threadResponse.json();
+        setData(threadData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-    // sub_idに一致するSubGenreDataのnameを取得
-    const subGenre = SubGenreData.find(item => item.Main_Genre_id.toString() === id);
-    if (subGenre) {
-      setSubGenreName(subGenre.name);
-    }
-
-    // ThreadDataからsub_idが一致するデータを抽出
-    const filteredData = ThreadData.filter(item => item.sub_Genre_id.toString() === id);
-
-    setData(filteredData);
+    fetchData();
   }, [id]);
 
   return (
