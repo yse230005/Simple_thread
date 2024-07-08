@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
+import './css/SubGenre.css';
 const SubGenre = () => {
   const { id } = useParams(); // URLパラメータからidを取得
 
@@ -54,7 +54,7 @@ const SubGenre = () => {
       <table>
         <tbody>
           {data.map(item => (
-            <tr key={item.id}>
+            <tr key={item.id} className='grid-container'>
               <td><Link to={`/Thread/${item.id}`}>{item.name}</Link></td>
             </tr>
           ))}

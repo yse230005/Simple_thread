@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './css/Title.css'; // CSSファイルをインポート
-
+import title from './img/title.png'
 const Title = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null); // エラー状態を管理
@@ -55,7 +55,7 @@ const Title = () => {
 
   return (
     <div className="container">
-      <h1>Simple_Thread</h1>
+      <h1><img src={title} alt="Simple_Thread" width="200"height="200"/></h1>
       
       <div className="grid-container">
         {Object.keys(groupedData).map((main_name) => (

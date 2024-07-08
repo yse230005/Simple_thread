@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './css/NewThread.css';
 
-function NewThread() {
-  const { subGenre_id } = useParams();
+const NewThread = ()  =>{
+  const { id } = useParams();
   const [threadTitle, setThreadTitle] = useState('');
 
   const handleCreateThread = async () => {
     if (threadTitle.trim() === '') {
       alert('スレッドタイトルを入力してください。');
-      return;
-    }
 
+    }
+    console.log(id);
+    console.log(threadTitle);
     const newThread = {
+      id: id,
       name: threadTitle,
-      id: subGenre_id,
     };
 
     try {
@@ -27,10 +28,7 @@ function NewThread() {
       });
 
       if (response.ok) {
-        alert('スレッドが作成されました。');
-        // リダイレクトのためにuseNavigateを使う
-        // history.push(`/SubGenre/${subGenre_id}`);
-        window.location.href=`/SubGenre/${subGenre_id}`;
+        window.location.href = `/SubGenre/${id}`;
       } else {
         alert('スレッドの作成に失敗しました。');
       }
@@ -43,7 +41,6 @@ function NewThread() {
   return (
     <div className="center">
       <h2>NewThread</h2>
-      
       <input
         className="child"
         type="text"

@@ -1,0 +1,16 @@
+.container {
+    text-align: center;
+    width: 1000px;/* 幅を固定する */
+    margin: auto;
+  }
+.id{
+    text-align: center;
+    width: 100px;
+}
+.text{
+    text-align: left;
+    width: 500px;
+}
+table{
+    margin: auto;
+}

@@ -1,24 +1,14 @@
 .container {
     text-align: center;
+    width: auto;
   }
 .grid-container {
-    width: 1000px;/* 幅を固定する */
+  text-align: left;
+    width: auto;/* 幅を固定する */
     display: flex;
     flex-wrap: wrap;
     margin: auto;
 
-  }
-  
-  .grid-item {
-    width: calc(100% / 3); /* 3つ横並びにするために幅を計算 */
-    box-sizing: border-box; /* 要素の内側にパディングや境界線を含めるために必要 */
-    padding: 10px; /* 適宜調整 */
-    text-align: center; /* 子要素を中央揃え */
-  }
-  
-  /* grid-itemの直下のテキスト要素（子要素）を中央揃えにする */
-  .grid-item > * {
-    margin: auto; /* 上下左右のマージンを自動で調整して中央揃えにする */
   }
   
   
