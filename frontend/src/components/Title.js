@@ -9,33 +9,28 @@ const Title = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/genres');
+        const response = await fetch('http://localhost:3001/api/genres');
     
         if (!response.ok) {
-          console.log("c")
           throw new Error('Network response was not ok');
         }
     
         const result = await response.json();
-        console.log("a");
+        // データのグループ化
+        const updatedData = Object.entries(result).flatMap(([main_name, subGenres]) =>
+          subGenres.map(subGenre => ({
+            ...subGenre,
+            main_name,
+            main_genre_id: subGenre.main_genres_id, // フィールド名を正しく変更
+          }))
+        );
         
-        setData(result);
-        console.log(data);
-        console.log(result);
-        // レスポンスから取得したデータを加工するなどの処理
-        // const updatedData = Object.keys(result).map(mainGenre => ({
-        //   mainGenre,
-        //   threads: result[mainGenre]
-        // }));
-      //   setData(updatedData);
+        setData(updatedData);
       } catch (error) {
-        console.log("b");
         setError('Error fetching data. Please try again later.');
       }
     };
     
-    
-
     fetchData();
   }, []);
 
@@ -49,21 +44,35 @@ const Title = () => {
     return <div className="container">Loading...</div>;
   }
 
-  // データがある場合の表示
+  // main_genre_id ごとにデータをグループ化する
   const groupedData = {};
   data.forEach((item) => {
-    if (!groupedData[item.name]) {
-      groupedData[item.name] = [];
+    if (!groupedData[item.main_name]) { // main_genre_id の代わりに main_name を使用
+      groupedData[item.main_name] = [];
     }
-    groupedData[item.name].push(item);
+    groupedData[item.main_name].push(item);
   });
 
   return (
     <div className="container">
-      <p>{data[0].mainGenre}</p>
-      
       <h1>Simple_Thread</h1>
-     
+      
+      <div className="grid-container">
+        {Object.keys(groupedData).map((main_name) => (
+          <div key={main_name} className="grid-item">
+            <h2>{main_name}</h2>
+            <table>
+              <tbody>
+                {groupedData[main_name].map((thread) => (
+                  <tr key={thread.id}>
+                    <td><Link to={`/SubGenre/${thread.id}`}>{thread.name}</Link></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

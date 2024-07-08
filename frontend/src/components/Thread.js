@@ -8,10 +8,12 @@ const Thread = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/threads/${id}`);
+        const response = await fetch(`http://localhost:3000/api/sub_genres/${id}/threads`);
         const result = await response.json();
+        console.log(result);
         setComments(result);
       } catch (error) {
+        console.log("a")
         console.error('Error fetching comments:', error);
       }
     };
@@ -27,10 +29,27 @@ const Thread = () => {
         <p><input type="submit" value="送信" /></p>
       </form>
       <div>
-        {comments.map((comment, index) => (
-          <p key={index}>{comment.text} ({comment.created_at})</p>
-        ))}
+      <table>
+        <tbody>
+          {comments.map(item => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
+            </tr>
+          ))}
+        </tbody>
+        </table>
       </div>
+                <table>
+                <tbody>
+                  
+                    <tr>
+                      <td>1</td>
+                      <td>分かる</td>
+                    </tr>
+          
+                </tbody>
+              </table>
     </div>
   );
 };
