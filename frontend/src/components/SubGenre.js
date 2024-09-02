@@ -44,7 +44,12 @@ const SubGenre = () => {
 
   // データが取得できていない場合の表示
   if (subGenreName === '' && data.length === 0) {
-    return <div className="container">Loading...</div>;
+    return (
+      <div className="container">
+        <h1>Thread List</h1>
+        <button>(<Link to={`/NewThread/${id}`}>新規スレッド</Link>)</button>
+      </div>
+    );
   }
 
   return (

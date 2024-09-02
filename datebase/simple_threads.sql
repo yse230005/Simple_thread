@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2024-06-24 06:22:00
+-- 生成日時: 2024-09-02 06:47:44
 -- サーバのバージョン： 10.4.32-MariaDB
 -- PHP のバージョン: 8.2.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- データベース: `simple_threads`
 --
-CREATE DATABASE IF NOT EXISTS `simple_threads` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `simple_threads`;
 
 -- --------------------------------------------------------
 
@@ -40,8 +38,12 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `text`, `created_at`) VALUES
-(1, '初めての書き込み！', '2024-06-24 11:08:47'),
-(2, 'こんにちは！', '2024-06-24 11:12:52');
+(1, '異論は認める！', '2024-07-01 15:46:07'),
+(2, 'だがこいつが許すかな？', '2024-07-08 10:04:24'),
+(3, 'a', '2024-07-08 15:25:18'),
+(4, 'a', '2024-07-08 15:25:38'),
+(5, 'あ', '2024-07-08 16:03:02'),
+(6, 'あ', '2024-07-08 16:06:25');
 
 -- --------------------------------------------------------
 
@@ -59,7 +61,12 @@ CREATE TABLE `main_genres` (
 --
 
 INSERT INTO `main_genres` (`id`, `name`) VALUES
-(1, '軍事');
+(1, '軍事'),
+(2, '政治経済'),
+(3, '学問'),
+(4, 'ゲーム'),
+(5, '趣味'),
+(6, '社会');
 
 -- --------------------------------------------------------
 
@@ -78,7 +85,22 @@ CREATE TABLE `main_genres_sub_genres` (
 --
 
 INSERT INTO `main_genres_sub_genres` (`id`, `main_genres_id`, `sub_genres_id`) VALUES
-(2, 1, 1);
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 3),
+(4, 2, 4),
+(5, 2, 5),
+(6, 3, 6),
+(7, 3, 7),
+(8, 4, 8),
+(9, 4, 9),
+(10, 4, 11),
+(11, 4, 10),
+(12, 5, 12),
+(13, 5, 13),
+(14, 5, 14),
+(15, 6, 15),
+(16, 6, 16);
 
 -- --------------------------------------------------------
 
@@ -97,7 +119,21 @@ CREATE TABLE `sub_genres` (
 
 INSERT INTO `sub_genres` (`id`, `name`) VALUES
 (1, '戦車'),
-(2, '戦闘機');
+(2, '戦闘機'),
+(3, '政治'),
+(4, '株式'),
+(5, '経済'),
+(6, '理系全般'),
+(7, '文系全般'),
+(8, 'ゲーム速報'),
+(9, '任天堂'),
+(10, 'ソニー'),
+(11, 'マイクロソフト'),
+(12, '趣味一般'),
+(13, 'お絵描き'),
+(14, 'ラジコン'),
+(15, '裁判・司法'),
+(16, '議員・選挙');
 
 -- --------------------------------------------------------
 
@@ -117,8 +153,10 @@ CREATE TABLE `threads` (
 --
 
 INSERT INTO `threads` (`id`, `name`, `sub_genres_id`, `created_at`) VALUES
-(1, 'aa', 1, '2024-06-24 11:50:14'),
-(11, 'aa', 2, '2024-06-24 11:51:20');
+(1, 'F-22は最強だ', 2, '2024-07-01 15:45:34'),
+(2, 'KV-1装甲硬すぎない？', 1, '2024-07-08 10:06:15'),
+(3, 'ｓ', 2, '2024-07-08 16:00:55'),
+(4, 'メビウス１強すぎ', 2, '2024-07-08 16:06:42');
 
 -- --------------------------------------------------------
 
@@ -137,9 +175,12 @@ CREATE TABLE `threads_comments` (
 --
 
 INSERT INTO `threads_comments` (`id`, `threads_id`, `comments_id`) VALUES
-(10, 1, 1),
-(11, 1, 2),
-(12, 11, 1);
+(1, 1, 1),
+(2, 2, 2),
+(3, 1, 3),
+(4, 1, 4),
+(5, 2, 5),
+(6, 2, 6);
 
 --
 -- ダンプしたテーブルのインデックス
@@ -194,37 +235,37 @@ ALTER TABLE `threads_comments`
 -- テーブルの AUTO_INCREMENT `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- テーブルの AUTO_INCREMENT `main_genres`
 --
 ALTER TABLE `main_genres`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- テーブルの AUTO_INCREMENT `main_genres_sub_genres`
 --
 ALTER TABLE `main_genres_sub_genres`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- テーブルの AUTO_INCREMENT `sub_genres`
 --
 ALTER TABLE `sub_genres`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- テーブルの AUTO_INCREMENT `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- テーブルの AUTO_INCREMENT `threads_comments`
 --
 ALTER TABLE `threads_comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- ダンプしたテーブルの制約
