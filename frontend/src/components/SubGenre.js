@@ -7,12 +7,13 @@ const SubGenre = () => {
   const [subGenreName, setSubGenreName] = useState('');
   const [data, setData] = useState([]);
   const [error, setError] = useState(null); // エラー状態を管理
-
+  const host = process.env.REACT_APP_HOST;
+  const port = process.env.REACT_APP_PORT;
   useEffect(() => {
     const fetchData = async () => {
       try {
         // サブジャンル名を取得
-        const subGenreResponse = await fetch(`http://localhost:3001/api/sub_genres/${id}/threads`);
+        const subGenreResponse = await fetch(`http://${host}:${port}/api/sub_genres/${id}/threads`);
         if (!subGenreResponse.ok) {
           throw new Error('Network response was not ok');
         }
@@ -22,7 +23,7 @@ const SubGenre = () => {
         }
 
         // スレッドデータを取得
-        const threadResponse = await fetch(`http://localhost:3001/api/sub_genres/${id}/threads`);
+        const threadResponse = await fetch(`http://${host}:${port}/api/sub_genres/${id}/threads`);
         if (!threadResponse.ok) {
           throw new Error('Network response was not ok');
         }
@@ -35,7 +36,7 @@ const SubGenre = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [id,host,port]);
 
   // エラーがある場合の表示
   if (error) {
@@ -46,6 +47,7 @@ const SubGenre = () => {
   if (subGenreName === '' && data.length === 0) {
     return (
       <div className="container">
+        <button>(<Link to={`/`}>トップに戻る</Link>)</button>
         <h1>Thread List</h1>
         <button>(<Link to={`/NewThread/${id}`}>新規スレッド</Link>)</button>
       </div>
@@ -54,7 +56,9 @@ const SubGenre = () => {
 
   return (
     <div className="container">
+      <button>(<Link to={`/`}>トップに戻る</Link>)</button>
       <h1>Thread List</h1>
+
       <button>(<Link to={`/NewThread/${id}`}>新規スレッド</Link>)</button>
       <table>
         <tbody>

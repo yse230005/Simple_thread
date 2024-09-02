@@ -6,10 +6,11 @@ const Thread = () => {
   const { id } = useParams();
   const [comments, setComments] = useState([]);
   const [text, setText] = useState('');
-
+  const host = process.env.REACT_APP_HOST;
+  const port = process.env.REACT_APP_PORT;
   const fetchComments = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/threads/${id}/comments`);
+      const response = await fetch(`http://${host}:${port}/api/threads/${id}/comments`);
       const result = await response.json();
       setComments(result);
     } catch (error) {
@@ -19,12 +20,12 @@ const Thread = () => {
 
   useEffect(() => {
     fetchComments();
-  }, [id]);
+  }, [id,host,port]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/api/threads/comments/add', {
+      const response = await fetch(`http://${host}:${port}/api/threads/comments/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

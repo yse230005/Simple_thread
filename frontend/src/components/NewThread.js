@@ -5,21 +5,20 @@ import './css/NewThread.css';
 const NewThread = ()  =>{
   const { id } = useParams();
   const [threadTitle, setThreadTitle] = useState('');
-
+  const host = process.env.REACT_APP_HOST;
+  const port = process.env.REACT_APP_PORT;
   const handleCreateThread = async () => {
     if (threadTitle.trim() === '') {
       alert('スレッドタイトルを入力してください。');
 
     }
-    console.log(id);
-    console.log(threadTitle);
     const newThread = {
       id: id,
       name: threadTitle,
     };
 
     try {
-      const response = await fetch('http://localhost:3001/api/threads/create', {
+      const response = await fetch(`http://${host}:${port}/api/threads/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

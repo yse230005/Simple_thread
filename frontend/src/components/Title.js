@@ -5,11 +5,14 @@ import title from './img/title.png'
 const Title = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null); // エラー状態を管理
+  const host = process.env.REACT_APP_HOST;
+  const port = process.env.REACT_APP_PORT;
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/genres');
+        const response = await fetch(`http://${host}:${port}/api/genres`);
     
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -32,7 +35,7 @@ const Title = () => {
     };
     
     fetchData();
-  }, []);
+  }, [host,port]);
 
   // エラーがある場合の表示
   if (error) {
